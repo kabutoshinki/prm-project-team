@@ -4,19 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
+
+<!--    <androidx.drawerlayout.widget.DrawerLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/drawer_layout"-->
+<!--        android:fitsSystemWindows="true"-->
+<!--        tools:openDrawer="start"-->
+<!--        >-->
+<!--        <com.google.android.material.navigation.NavigationView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:id="@+id/nav_view"-->
+<!--            app:headerLayout="@layout/nav_header_main"-->
+<!--            app:menu="@menu/layout_main_drawer"-->
+<!--            android:layout_gravity="start"/>-->
+
+
+<!--    </androidx.drawerlayout.widget.DrawerLayout>-->
+
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/Theme.Team_project.AppBarOverlay">
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.Team_project.PopupOverlay" />
+            app:popupTheme="@style/Theme.Team_project.PopupOverlay" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Mall"
+                android:textSize="30dp"/>
+        </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
