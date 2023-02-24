@@ -2,18 +2,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.team_project.activity.MainActivity">
+
     <item
-        android:id="@+id/main_search_icon"
-        android:orderInCategory="100"
-        android:icon="@drawable/ic_search_white"
-        android:title="search"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/main_notification"
-        android:orderInCategory="100"
-        android:icon="@drawable/ic_notification_white"
-        android:title="notification"
-        app:showAsAction="always" />
+        android:id="@+id/main_logout"
+        android:title="logout"
+        android:icon="@drawable/ic_logout_white"
+        app:showAsAction="always"
+        />
     <item
         android:id="@+id/main_cart"
         android:orderInCategory="100"

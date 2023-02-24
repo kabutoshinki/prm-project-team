@@ -1,5 +1,7 @@
 package com.example.team_project.fragment;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,12 +15,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.team_project.R;
+import com.example.team_project.activity.ShowAllActivity;
 import com.example.team_project.adapter.CategoryAdapter;
 import com.example.team_project.adapter.PopularProductsAdapter;
 import com.example.team_project.adapter.ProductAdapter;
@@ -41,6 +46,10 @@ public class HomePageFragment extends Fragment {
 
     private FragmentHomePageBinding binding;
 
+    TextView catShowAll,popularShowAll,productShowAll;
+
+    LinearLayout linearLayout;
+    ProgressDialog progressDialog;
     RecyclerView catRecyclerview,newProductRecycleview,popularRecycleview;
 
     //Product recycleview
@@ -67,10 +76,46 @@ public class HomePageFragment extends Fragment {
         //init
         binding = FragmentHomePageBinding.inflate(inflater, container, false);
         ImageSlider imageSlider = binding.getRoot().findViewById(R.id.image_slider);
-        catRecyclerview = binding.getRoot().findViewById(R.id.rec_category);
+        //db
         db = FirebaseFirestore.getInstance();
+
+        linearLayout = binding.getRoot().findViewById(R.id.home_layout);
+        linearLayout.setVisibility(View.GONE);
+
+        progressDialog = new ProgressDialog(getActivity());
+
+        catRecyclerview = binding.getRoot().findViewById(R.id.rec_category);
         newProductRecycleview = binding.getRoot().findViewById(R.id.new_product_rec);
         popularRecycleview = binding.getRoot().findViewById(R.id.popular_rec);
+
+        //See All
+        catShowAll = binding.getRoot().findViewById(R.id.category_see_all);
+        productShowAll = binding.getRoot().findViewById(R.id.newProducts_see_all);
+        popularShowAll = binding.getRoot().findViewById(R.id.popular_see_all);
+
+        catShowAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ShowAllActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        productShowAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ShowAllActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        popularShowAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ShowAllActivity.class);
+                startActivity(intent);
+            }
+        });
 
         List<SlideModel> slideModels = new ArrayList<>();
 
@@ -78,6 +123,11 @@ public class HomePageFragment extends Fragment {
         slideModels.add(new SlideModel(R.drawable.banner2,"Discount On Perfume", ScaleTypes.CENTER_CROP));
         slideModels.add(new SlideModel(R.drawable.banner3,"70%", ScaleTypes.CENTER_CROP));
         imageSlider.setImageList(slideModels);
+        progressDialog.setTitle("Welcome To My Ecommerce App");
+        progressDialog.setMessage("please wait...");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
+
 
         //category
         catRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
@@ -96,6 +146,8 @@ public class HomePageFragment extends Fragment {
                                 Category category = document.toObject(Category.class);
                                 categoryList.add(category);
                                 categoryAdapter.notifyDataSetChanged();
+                                linearLayout.setVisibility(View.VISIBLE);
+                                progressDialog.dismiss();
                             }
                         } else {
 

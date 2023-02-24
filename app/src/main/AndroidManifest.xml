@@ -15,22 +15,32 @@
         android:theme="@style/Theme.Team_project"
         tools:targetApi="31">
         <activity
+            android:name=".activity.CartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ShowAllActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.DetailedActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.SignUpActivity"
             android:exported="false"
-            android:theme="@style/Theme.Team_project.NoActionBar"/>
+            android:theme="@style/Theme.Team_project.NoActionBar" />
         <activity
             android:name=".activity.MainActivity"
             android:exported="false"
-            android:theme="@style/Theme.Team_project.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.Team_project.NoActionBar" />
         <activity
             android:name=".activity.SignInActivity"
             android:exported="true"
             android:theme="@style/Theme.Team_project.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

@@ -1,11 +1,13 @@
 package com.example.team_project.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.team_project.R;
 import com.example.team_project.databinding.LayoutMainBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -18,6 +20,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.team_project.databinding.LayoutMainBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private LayoutMainBinding binding;
-
+    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +38,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.toolbar);
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_navigatebar_white);
 
+
+
+        auth = FirebaseAuth.getInstance();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
@@ -56,36 +65,29 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.main_search_icon) {
-//            return true;
-//        }else if(id == R.id.main_notification){
-//            return true;
-//        }else if(id==R.id.main_cart){
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-//
-//    public boolean onNavigationItemSelected(MenuItem item){
-//        int id = item.getItemId();
-//
-//        if (id == R.id.nav_order) {
-//
-//        }
-//
-//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-//        drawer.closeDrawer(GravityCompat.START);
-//        return true;
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.main_logout) {
+            auth.signOut();
+            Intent intent = new Intent(MainActivity.this,SignInActivity.class);
+            startActivity(intent);
+            finish();
+        }else if(id==R.id.main_cart){
+            Intent intent = new Intent(MainActivity.this,CartActivity.class);
+            startActivity(intent);
+//            finish();
+        }
+
+        return true;
+    }
+
+
 
     @Override
     public boolean onSupportNavigateUp() {

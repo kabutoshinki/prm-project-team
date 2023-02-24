@@ -1,6 +1,8 @@
 package com.example.team_project.models;
 
-public class PopularProducts {
+import java.io.Serializable;
+
+public class PopularProducts implements Serializable {
     private String description;
     private String name;
     private String rating;
