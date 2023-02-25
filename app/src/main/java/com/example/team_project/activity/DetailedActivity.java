@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -57,7 +58,12 @@ public class DetailedActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.detailed_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         //TextView
         detailedImg = findViewById(R.id.detailed_img);
@@ -94,6 +100,23 @@ public class DetailedActivity extends AppCompatActivity {
             totalPrice=popularProducts.getPrice()*totalQuantity;
         }
 
+
+        //Buy Now
+        buyNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DetailedActivity.this,AddressActivity.class);
+                if(product!=null){
+                    intent.putExtra("item",product);
+                }
+
+                if(popularProducts!=null){
+                    intent.putExtra("item",popularProducts);
+                }
+                startActivity(intent);
+            }
+        });
+        //Add to cart
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
