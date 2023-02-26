@@ -10,24 +10,26 @@
         android:id="@+id/my_cart_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#8ff7fd"
+        android:background="#e892ab"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="My Cart"/>
+        app:title="My Cart"
+        app:titleTextColor="#fff" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="#8ff7fd"
+        android:background="#e892ab"
         android:fontFamily="@font/amethysta"
         android:gravity="center"
         android:padding="18dp"
         android:text="Total Price: $"
+        android:textColor="#fff"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,6 +52,7 @@
         android:id="@+id/buyBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
         android:background="@color/blue"
         android:backgroundTint="@color/purple_700"
         android:drawableLeft="@drawable/ic_baseline_shopping_cart_24"
@@ -60,6 +63,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_percent=".9" />
 

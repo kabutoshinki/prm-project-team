@@ -10,10 +10,12 @@
     <ImageView
         android:id="@+id/detailed_img"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="60dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,15 +50,19 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
+                    android:id="@+id/detailed_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/detailed_name"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:text="Product Name"
+                    android:layout_marginTop="32dp"
+                    android:ellipsize="end"
                     android:fontFamily="@font/amethysta"
-                    android:textColor="@color/black"/>
+                    android:maxLines="2"
+                    android:text="Product Name"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/rating"
@@ -83,44 +89,38 @@
 
             <TextView
                 android:id="@+id/detailed_desc"
-                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Price"
-                android:textSize="21sp"
-                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:fontFamily="@font/amethysta"/>
+                android:ellipsize="end"
+                android:maxLines="8"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged." />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$"
-                    android:textStyle="bold"
                     android:fontFamily="@font/amethysta"
-                    android:textColor="@color/purple_700"/>
+                    android:text="$"
+                    android:textColor="#d0021c"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/detailed_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="20"
-                    android:textStyle="bold"
                     android:fontFamily="@font/amethysta"
-                    android:textColor="@color/purple_700"/>
+                    android:text="20"
+                    android:textColor="#d0021c"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -129,12 +129,14 @@
                 android:orientation="horizontal"
                 android:gravity="center_horizontal"
                 android:layout_margin="10dp">
+
                 <ImageView
-                    android:layout_marginLeft="7dp"
-                    android:layout_width="40dp"
+                    android:id="@+id/add_item"
+                    android:layout_width="20dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/plusicon"
-                    android:id="@+id/add_item"/>
+                    android:layout_marginRight="40dp"
+                    android:src="@drawable/plusicon" />
+
                 <TextView
                     android:id="@+id/quantity"
                     android:layout_width="wrap_content"
@@ -142,53 +144,56 @@
                     android:text="1"
                     android:textSize="30sp"
                     android:textStyle="bold"/>
-                
+
                 <ImageView
-                    android:layout_marginLeft="7dp"
-                    android:layout_width="40dp"
+                    android:id="@+id/remove_item"
+                    android:layout_width="20dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/iconminus"
-                    android:id="@+id/remove_item"/>
+                    android:layout_marginLeft="40dp"
+                    android:src="@drawable/minusicon" />
 
             </LinearLayout>
-            
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/add_to_cart"
-        android:layout_width="0dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/pink"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="-32dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#FD737D"
         android:drawableLeft="@drawable/mycart"
         android:drawableTint="@color/white"
         android:padding="14dp"
         android:text="Add To Cart"
         android:textAllCaps="false"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/buy_now"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buy_now"
+        app:layout_constraintHorizontal_bias="0.363"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
-        app:layout_constraintVertical_bias="1"
         app:layout_constraintWidth_percent=".8" />
 
     <Button
         android:id="@+id/buy_now"
-        android:layout_width="0dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="-32dp"
+        android:layout_marginEnd="16dp"
         android:backgroundTint="@color/textHeading"
         android:drawableLeft="@drawable/ic_baseline_shopping_cart_24"
         android:drawableTint="@color/white"
+        android:maxWidth="200dp"
         android:padding="14dp"
         android:text="Buy Now"
         android:textAllCaps="false"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent=".8" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

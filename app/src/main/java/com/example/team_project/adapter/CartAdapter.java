@@ -12,11 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.team_project.R;
-import com.example.team_project.activity.DetailedActivity;
 import com.example.team_project.models.Cart;
-import com.example.team_project.models.Product;
 
 import java.util.List;
 
@@ -69,10 +66,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
             super(itemView);
             name = itemView.findViewById(R.id.product_name);
             price = itemView.findViewById(R.id.product_price);
-            date = itemView.findViewById(R.id.current_date);
-            time = itemView.findViewById(R.id.current_time);
-            totalQuantity = itemView.findViewById(R.id.total_quantity);
-            totalPrice = itemView.findViewById(R.id.total_price);
+//            date = itemView.findViewById(R.id.current_date);
+//            time = itemView.findViewById(R.id.current_time);
+            totalQuantity = itemView.findViewById(R.id.total_price);
+            totalPrice = itemView.findViewById(R.id.total_quantity);
         }
     }
 }
