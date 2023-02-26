@@ -119,9 +119,10 @@ public class HomePageFragment extends Fragment {
 
         List<SlideModel> slideModels = new ArrayList<>();
 
-        slideModels.add(new SlideModel(R.drawable.banner1,"Discount On Shoes Items", ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel(R.drawable.banner2,"Discount On Perfume", ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel(R.drawable.banner3,"70%", ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.banner_1,"Discount On HeadPhone", ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.banner_2,"Discount On Watch", ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.banner_3,"Discount On Laptop 70%", ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.banner_4,"Discount 70%", ScaleTypes.CENTER_CROP));
         imageSlider.setImageList(slideModels);
         progressDialog.setTitle("Welcome To My Ecommerce App");
         progressDialog.setMessage("please wait...");
