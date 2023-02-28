@@ -6,6 +6,7 @@ public class Cart {
     String productName;
     String productPrice;
     String totalQuantity;
+    String productImage;
     int totalPrice;
 
     public Cart() {
@@ -19,6 +20,18 @@ public class Cart {
         this.totalQuantity = totalQuantity;
         this.totalPrice = totalPrice;
     }
+
+    public Cart(String currentTime, String currentDate, String productName, String productPrice, String totalQuantity, String productImage, int totalPrice) {
+        this.currentTime = currentTime;
+        this.currentDate = currentDate;
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.totalQuantity = totalQuantity;
+        this.productImage = productImage;
+        this.totalPrice = totalPrice;
+    }
+
+
 
     public String getCurrentTime() {
         return currentTime;
@@ -68,6 +81,16 @@ public class Cart {
         this.totalPrice = totalPrice;
     }
 
+    public String getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
+    }
+
+
+
     @Override
     public String toString() {
         return "Cart{" +
@@ -76,6 +99,7 @@ public class Cart {
                 ", productName='" + productName + '\'' +
                 ", productPrice='" + productPrice + '\'' +
                 ", totalQuantity='" + totalQuantity + '\'' +
+                ", productImage='" + productImage + '\'' +
                 ", totalPrice=" + totalPrice +
                 '}';
     }

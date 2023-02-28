@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.example.team_project.R;
 import com.example.team_project.models.PopularProducts;
 import com.example.team_project.models.Product;
+import com.example.team_project.models.ShowAll;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,7 +31,7 @@ public class DetailedActivity extends AppCompatActivity {
     ImageView detailedImg;
     TextView rating,name,description,price,quantity;
     Button addToCart,buyNow;
-    ImageView addItems,removeItems;
+    ImageView addItems,removeItems,productImage;
     Toolbar toolbar;
     int totalQuantity=1;
     int totalPrice=0;
@@ -38,6 +39,10 @@ public class DetailedActivity extends AppCompatActivity {
     Product product = null;
     //Popular
     PopularProducts popularProducts = null;
+    //Show All
+    ShowAll showAll = null;
+
+    //Firebase
     FirebaseAuth auth;
     private FirebaseFirestore firestore;
     @Override
@@ -53,6 +58,8 @@ public class DetailedActivity extends AppCompatActivity {
             product = (Product) obj;
         } else if (obj instanceof  PopularProducts) {
             popularProducts = (PopularProducts) obj;
+        }else if (obj instanceof  ShowAll) {
+            showAll = (ShowAll) obj;
         }
         //toolbar
         toolbar = findViewById(R.id.detailed_toolbar);
@@ -67,11 +74,13 @@ public class DetailedActivity extends AppCompatActivity {
 
         //TextView
         detailedImg = findViewById(R.id.detailed_img);
+        detailedImg.setTag("");
         quantity = findViewById(R.id.quantity);
         name = findViewById(R.id.detailed_name);
         rating = findViewById(R.id.rating);
         description = findViewById(R.id.detailed_desc);
         price = findViewById(R.id.detailed_price);
+
 
         //Button
         addToCart = findViewById(R.id.add_to_cart);
@@ -80,10 +89,11 @@ public class DetailedActivity extends AppCompatActivity {
         //Image View
         addItems = findViewById(R.id.add_item);
         removeItems = findViewById(R.id.remove_item);
-
+//        productImage = findViewById(R.id.detailed_img)
         //Product
         if(product!=null){
             Glide.with(getApplicationContext()).load(product.getImg_url()).into(detailedImg);
+            detailedImg.setTag(product.getImg_url());
             name.setText(product.getName());
             rating.setText(product.getRating());
             description.setText(product.getDescription());
@@ -93,6 +103,7 @@ public class DetailedActivity extends AppCompatActivity {
 
         if(popularProducts!=null){
             Glide.with(getApplicationContext()).load(popularProducts.getImg_url()).into(detailedImg);
+            detailedImg.setTag(popularProducts.getImg_url());
             name.setText(popularProducts.getName());
             rating.setText(popularProducts.getRating());
             description.setText(popularProducts.getDescription());
@@ -100,6 +111,15 @@ public class DetailedActivity extends AppCompatActivity {
             totalPrice=popularProducts.getPrice()*totalQuantity;
         }
 
+        if(showAll!=null){
+            Glide.with(getApplicationContext()).load(showAll.getImg_url()).into(detailedImg);
+            detailedImg.setTag(showAll.getImg_url());
+            name.setText(showAll.getName());
+            rating.setText(showAll.getRating());
+            description.setText(showAll.getDescription());
+            price.setText(String.valueOf(showAll.getPrice()));
+            totalPrice=showAll.getPrice()*totalQuantity;
+        }
 
         //Buy Now
         buyNow.setOnClickListener(new View.OnClickListener() {
@@ -166,6 +186,7 @@ public class DetailedActivity extends AppCompatActivity {
 
         cartMap.put("productName",name.getText().toString());
         cartMap.put("productPrice",price.getText().toString());
+        cartMap.put("productImage",detailedImg.getTag().toString());
         cartMap.put("currentTime",saveCurrentTime);
         cartMap.put("currentDate",saveCurrentDate);
         cartMap.put("totalQuantity",quantity.getText().toString());

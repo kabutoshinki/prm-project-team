@@ -44,7 +44,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
         holder.name.setText(list.get(position).getProductName());
         holder.totalPrice.setText(String.valueOf(list.get(position).getTotalPrice()));
         holder.totalQuantity.setText(list.get(position).getTotalQuantity());
-        Glide.with(context).load("https://firebasestorage.googleapis.com/v0/b/team-project-mobile.appspot.com/o/Category-headphone.webp?alt=media&token=77d79807-a861-4359-bd9d-c6e1e6743eec").into(holder.img_product);
+        Glide.with(context).load(list.get(position).getProductImage()).into(holder.img_product);
         totalAmount = totalAmount + list.get(position).getTotalPrice();
         Intent intent = new Intent("MyTotalAmount");
         intent.putExtra("totalAmount",totalAmount);
