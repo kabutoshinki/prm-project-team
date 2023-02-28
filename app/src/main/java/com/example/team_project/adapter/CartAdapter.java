@@ -42,7 +42,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
 //        holder.time.setText(list.get(position).getCurrentTime());
         holder.price.setText(list.get(position).getProductPrice()+"$");
         holder.name.setText(list.get(position).getProductName());
-        holder.totalPrice.setText(String.valueOf(list.get(position).getTotalPrice()));
+        holder.totalPrice.setText(String.valueOf(list.get(position).getTotalPrice())+"$");
         holder.totalQuantity.setText(list.get(position).getTotalQuantity());
         Glide.with(context).load(list.get(position).getProductImage()).into(holder.img_product);
         totalAmount = totalAmount + list.get(position).getTotalPrice();
@@ -70,8 +70,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
             img_product = itemView.findViewById(R.id.img_product);
 //            date = itemView.findViewById(R.id.current_date);
 //            time = itemView.findViewById(R.id.current_time);
-            totalQuantity = itemView.findViewById(R.id.total_price);
-            totalPrice = itemView.findViewById(R.id.total_quantity);
+            totalQuantity = itemView.findViewById(R.id.total_quantity);
+            totalPrice = itemView.findViewById(R.id.total_price);
         }
     }
 }
