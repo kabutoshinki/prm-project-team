@@ -62,7 +62,7 @@ public class CartActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,new IntentFilter("MyTotalAmount"));
         buyBtn = findViewById(R.id.buyBtn);
         totalAmount = findViewById(R.id.textView3);
-        recyclerView = findViewById(R.id.cart_rec);
+        recyclerView = findViewById(R.id.order_history_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         cartList = new ArrayList<>();
         cartAdapter = new CartAdapter(this,cartList);

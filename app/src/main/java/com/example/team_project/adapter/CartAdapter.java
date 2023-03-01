@@ -66,7 +66,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.product_name);
-            price = itemView.findViewById(R.id.product_price);
+            price = itemView.findViewById(R.id.total_price);
             img_product = itemView.findViewById(R.id.img_product);
 //            date = itemView.findViewById(R.id.current_date);
 //            time = itemView.findViewById(R.id.current_time);

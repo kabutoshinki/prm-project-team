@@ -23,7 +23,7 @@
 
             <ImageView
                 android:id="@+id/item_image"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/ic_launcher_foreground" />
