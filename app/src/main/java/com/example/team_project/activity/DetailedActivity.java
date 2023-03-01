@@ -191,7 +191,6 @@ public class DetailedActivity extends AppCompatActivity {
         cartMap.put("currentDate",saveCurrentDate);
         cartMap.put("totalQuantity",quantity.getText().toString());
         cartMap.put("totalPrice",totalPrice);
-
         firestore.collection("AddToCart").document(auth.getCurrentUser().getUid()).collection("User").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {

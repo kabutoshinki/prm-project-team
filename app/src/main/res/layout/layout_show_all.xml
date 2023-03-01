@@ -7,39 +7,36 @@
     tools:context=".activity.ShowAllActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
+        android:id="@+id/toolbarShowAll"
         android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         android:background="#C8352A"
         app:layout_anchorGravity="top|center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/Theme.Team_project.PopupOverlay">
+        app:popupTheme="@style/Theme.Team_project.PopupOverlay"
+        app:title="My Mall"
+        app:titleTextColor="@color/white"/>
 
-        <ImageView
-            android:id="@+id/baseline_menu"
-            android:layout_width="50dp"
-            android:layout_height="32dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/menuicon" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="My Mall"
-            android:textColor="#fff"
-            android:textSize="28dp" />
-    </androidx.appcompat.widget.Toolbar>
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarShowAll" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/show_all_rec"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+        app:layout_constraintTop_toBottomOf="@+id/searchView">
 
     </androidx.recyclerview.widget.RecyclerView>
 
